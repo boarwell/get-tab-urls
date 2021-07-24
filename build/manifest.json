@@ -1,0 +1,19 @@
+{
+  "name": "get-url",
+  "description": "get all tabs url",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["tabs", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "256": "bitmap.png"
+    }
+  },
+  "icons": {
+    "256": "bitmap.png"
+  }
+}
