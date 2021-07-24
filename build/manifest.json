@@ -1,5 +1,5 @@
 {
-  "name": "get-url",
+  "name": "get-tab-urls",
   "description": "get all tabs url",
   "version": "1.0",
   "manifest_version": 3,
