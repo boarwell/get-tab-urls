@@ -21,6 +21,16 @@ async function getPageURLs(): Promise<string[]> {
     return;
   }
 
+  const clipboard = document.querySelector("#clipboard-write");
+  if (clipboard == undefined) {
+    return;
+  }
+
+  clipboard.addEventListener("click", async () => {
+    const urls = await getPageURLs();
+    await navigator.clipboard.writeText(urls.join("\n"));
+  });
+
   const urls = await getPageURLs();
   textarea.textContent = urls.join("\n");
 })();
