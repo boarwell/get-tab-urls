@@ -5,12 +5,12 @@ const config = {
   mode: "development",
 
   entry: {
-    "popup/main": "./src/ts/popup/main.ts",
+    popup: "./src/ts/pages/popup.ts",
   },
 
   output: {
     path: resolve("build"),
-    filename: "[name].js",
+    filename: "[name]/main.js",
   },
 
   // to prevent a error caused by eval()
