@@ -25,6 +25,10 @@ const config = {
       },
     ],
   },
+
+  resolve: {
+    extensions: [".tsx", ".ts"],
+  },
 };
 
 export default config;
