@@ -1,4 +1,5 @@
 import { browser, Tabs } from "webextension-polyfill-ts";
+import { useEffect, useRef, useState } from "preact/hooks";
 
 /**
  * Checks if the tab is opening a web page (instead of a page like chrome://*).
@@ -15,4 +16,22 @@ export async function getPageURLs(): Promise<string[]> {
   const urls = tabs.flatMap((tab) => (isWebPage(tab) ? [tab.url ?? ""] : []));
 
   return urls;
+}
+
+/**
+ * Run the function once on mount.
+ *
+ * @see https://github.com/reactwg/react-18/discussions/19
+ */
+export function useOnMount(f: () => unknown) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    if (mounted) {
+      return;
+    }
+
+    f();
+    setMounted(true);
+  }, [mounted]);
 }
