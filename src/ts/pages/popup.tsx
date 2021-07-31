@@ -1,4 +1,5 @@
 import { browser, Tabs } from "webextension-polyfill-ts";
+import { h, render } from "preact";
 
 /**
  * Checks if the tab is opening a web page (instead of a page like chrome://*).
@@ -35,4 +36,9 @@ async function getPageURLs(): Promise<string[]> {
 
   const urls = await getPageURLs();
   textarea.textContent = urls.join("\n");
+
+  const root = document.querySelector("#root");
+  if (root !== null) {
+    render(<div>Ohayo Nippon</div>, root);
+  }
 })();

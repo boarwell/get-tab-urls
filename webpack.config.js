@@ -5,7 +5,7 @@ const config = {
   mode: "development",
 
   entry: {
-    popup: "./src/ts/pages/popup.ts",
+    popup: "./src/ts/pages/popup.tsx",
   },
 
   output: {
@@ -19,7 +19,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /.ts$/,
+        test: /.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
