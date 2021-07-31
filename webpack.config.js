@@ -5,7 +5,7 @@ const config = {
   mode: "development",
 
   entry: {
-    popup: "./src/ts/pages/popup.tsx",
+    popup: "./src/ts/pages/popup/index.tsx",
   },
 
   output: {

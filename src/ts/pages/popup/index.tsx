@@ -1,7 +1,7 @@
 import { h, render, FunctionComponent, Fragment } from "preact";
 import { useEffect, useState } from "preact/hooks";
 
-import { getPageURLs } from "../util";
+import { getPageURLs } from "../../util";
 
 async function writeURLsToClipboard(): Promise<void> {
   const urls = await getPageURLs();
