@@ -5,3 +5,7 @@ button {
 body {
   width: 400px;
 }
+
+.urls__entry {
+  word-break: break-all;
+}

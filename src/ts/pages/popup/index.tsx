@@ -1,6 +1,8 @@
 import { h, render, FunctionComponent, Fragment } from "preact";
 import { useEffect, useState } from "preact/hooks";
 
+import { URLs } from "../../components/URLs";
+
 import { getPageURLs } from "../../util";
 
 async function writeURLsToClipboard(): Promise<void> {
@@ -9,19 +11,18 @@ async function writeURLsToClipboard(): Promise<void> {
 }
 
 const Page: FunctionComponent = () => {
-  const [val, setVal] = useState("");
+  const [urls, setURLs] = useState<string[]>([]);
   useEffect(() => {
-    getPageURLs().then((urls) => {
-      setVal(urls.join("\n"));
+    getPageURLs().then((pageURLs) => {
+      setURLs(pageURLs);
     });
   }, []);
 
   return (
     <Fragment>
-      <h1>日本語</h1>
-      <textarea name="urls" id="urls" cols={30} rows={10}>
-        {val}
-      </textarea>
+      <h1>Tabs on the current window:</h1>
+
+      <URLs urls={urls} />
 
       <button type="button" id="clipboard-write" onClick={writeURLsToClipboard}>
         Write URLs to clipboard
