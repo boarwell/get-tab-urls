@@ -35,3 +35,18 @@ export function useOnMount(f: () => unknown) {
     setMounted(true);
   }, [mounted]);
 }
+
+/**
+ * getPageURLs() in React Hook
+ */
+export function useURLs(): string[] {
+  const [urls, setURLs] = useState<string[]>([]);
+
+  useEffect(() => {
+    getPageURLs().then((pageURLs) => {
+      setURLs(pageURLs);
+    });
+  });
+
+  return urls;
+}

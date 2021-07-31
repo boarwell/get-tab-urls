@@ -1,9 +1,8 @@
 import { h, render, FunctionComponent, Fragment } from "preact";
-import { useState } from "preact/hooks";
 
 import { URLs } from "../../components/URLs";
 
-import { getPageURLs, useOnMount } from "../../util";
+import { getPageURLs, useURLs } from "../../util";
 
 async function writeURLsToClipboard(): Promise<void> {
   const urls = await getPageURLs();
@@ -11,11 +10,7 @@ async function writeURLsToClipboard(): Promise<void> {
 }
 
 const Page: FunctionComponent = () => {
-  const [urls, setURLs] = useState<string[]>([]);
-  useOnMount(async () => {
-    const pageURLs = await getPageURLs();
-    setURLs(pageURLs);
-  });
+  const urls = useURLs();
 
   return (
     <Fragment>
