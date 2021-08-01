@@ -1,5 +1,5 @@
 import { browser, Tabs } from "webextension-polyfill-ts";
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 /**
  * Checks if the tab is opening a web page (instead of a page like chrome://*).
@@ -16,6 +16,20 @@ export async function getPageURLs(): Promise<string[]> {
   const urls = tabs.flatMap((tab) => (isWebPage(tab) ? [tab.url ?? ""] : []));
 
   return urls;
+}
+
+/**
+ * Closes the web page tabs on current window (excluding pinned ones).
+ */
+export async function closeAllTabs(): Promise<void> {
+  const tabs = await browser.tabs.query({ pinned: false, currentWindow: true });
+  for (const tab of tabs) {
+    if (tab.id === undefined || !isWebPage(tab)) {
+      continue;
+    }
+
+    browser.tabs.remove(tab.id);
+  }
 }
 
 /**

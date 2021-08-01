@@ -1,9 +1,17 @@
+/* base */
 button {
   cursor: pointer;
 }
 
 body {
   width: 400px;
+}
+
+/* app */
+.page-popup__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-flow: row wrap;
 }
 
 .urls__entry {
